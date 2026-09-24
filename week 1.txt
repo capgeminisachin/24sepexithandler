@@ -1,0 +1,70 @@
+
+
+Draft
+No method created for standard like above, for custom logic ABP handler method gets created by keyword "with additional implementation", any ADV needed to be done in ADV logics
+
+
+Etag
+No method generated. The etag master statement does not support extensions like with additional implementation to force a custom handler, like above cases. Any validation needs be done in their respective methods like above case
+
+Numbering
+External, and unmanaged, is configurable. Managed is RAP provided. Notice, more the custom logics required, more the flexibility offered by SAP
+
+C++ has multiple inheritance, while java doesnt, ABAP too doesnt. Reasons: to avoid complexity and to avoid diamond problem. Both use interfaces as the solution to it.
+
+Kernal BADI executes at the kernel level of SAP , which uses c++, while classic BADI executes in the application layer. C++ is closer to the hardware as well. C++ is almost all of the OS too.
+
+
+
+19 sep 2026:
+When having interface layer cds association-composition, then we include the alias in selection list.
+
+When we propagate the associaiton-composition to consumption level, then the same alias stays in the selection list(parent level), while redirection is opposite(same level). In other words, its projector in the definition part itself, but its the other one in the redirection part.
+
+Read VS rba IN EML: order item example: entity keyword lists the read entity, and only the item/order named after "entity" is returned. For rba, navigation is done. If entity lists header order, navigation done to child item, if entity names child item, navigation done to header order
+
+Cds extend view is the new way to extend, field1 being extended to cds1 need to exist in some table, else be appended or included. It permanently extends cds1. There is no different/new standalone cds view, cds1 is the only view. Bdef extension can also be done for the same extension.
+
+TABL ADT: single record full key buffer has no fallback mechanism, while generic buffer also works with full key
+
+ An existing CDS view can have one or more CDS view entity extensions.
+
+CDS view entity extensions themselves cannot be extended.
+A common way to extend, is to associate to another view/tabl and then extend field from that table into base tabl
+
+-------------
+In a managed RAP BO, optimistic concurrency control with ETag fields can be handled by the managed RAP BO provider, so that no implementation in the ABAP behavior pool is required. This is only possible if the following prerequisites are met:
+{
+The ETag field must be updated reliably with every change on the RAP BO entity instance.
+The read access to the ETag master field from every entity that uses this particular ETag field must be guaranteed.
+}
+
+In an unmanaged RAP BO, the handling of the ETag fields must be implemented in the ABAP behavior pool.
+---------
+RAP draft handling is in all scenarios completely managed by the RAP transactional engine. The application developer is not responsible for how draft data is written to the draft database table.
+----------
+
+In a managed RAP BO, the locking mechanism is handled by the managed RAP BO provider, so that no implementation in the ABAP behavior pool is required. If the optional addition unmanaged is used, the lock mechanism must be implemented manually in the method FOR LOCK of the behavior pool, just like in the unmanaged scenario. It is then invoked at runtime.
+
+--------------
+
+Late numbering is internal by default, since a consumer can't influence the SAVEsequence after the point of no return. To define late numbering, the method ADJUST NUMBERSmust be implemented.
+
+-----------------
+
+Late numbering is available for managed and unmanaged implementation scenarios with and without draft.
+
+------------
+23sep:
+Lock master entities are locked on each locking request on one of their lock dependent entities.
+24 sep:
+Some shit known as XCO library is used to automate RAP apps creation, and is used in rap generator too
+https://community.sap.com/t5/technology-blog-posts-by-sap/setting-up-python-in-sap-business-application-studio-to-trigger-hana-cloud/ba-p/14387837 : python + sap : https://help.sap.com/doc/generative-ai-hub-sdk/CLOUD/en-US/_api_doc/gen_ai_hub.html#
+https://community.sap.com/t5/technology-blog-posts-by-sap/the-rap-generator/ba-p/13456829
+
+
+
+
+
+
+
